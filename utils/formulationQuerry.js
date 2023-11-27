@@ -1,6 +1,6 @@
 const database = require('../database');
 
-const Formule = function(formule) {
+const Formulle = function(formule) {
   this.name = formule.name;
   this.assortment = formule.assortment;
   this.component = formule.component;
@@ -9,7 +9,7 @@ const Formule = function(formule) {
   this.total = formule.total;
 };
 
-Formule.findByName = (name, result) => {
+Formulle.findByName = (name, result) => {
   database.inktFormSql.query(
     `SELECT * FROM named_list WHERE name LIKE '${name}%'`,
     (err, res) => {
@@ -22,7 +22,7 @@ Formule.findByName = (name, result) => {
   );
 };
 
-Formule.findById = (id, result) => {
+Formulle.findById = (id, result) => {
   database.inktFormSql.query(
     `SELECT * FROM named_list WHERE ID LIKE '${id}'`,
     (err, res) => {
@@ -35,4 +35,4 @@ Formule.findById = (id, result) => {
   );
 };
 
-module.exports = Formule;
+module.exports = Formulle;

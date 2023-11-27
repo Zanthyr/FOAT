@@ -4,8 +4,8 @@
   "description": "Node.js Restful CRUD API with Node.js, Express and MySQL",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=production nodemon server.js",
-    "test": "nodemon server.js"
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "start:dev": "nodemon server.js"
   },
   "keywords": [
     "nodejs",
@@ -19,7 +19,8 @@
     "dotenv": "^16.3.1",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
