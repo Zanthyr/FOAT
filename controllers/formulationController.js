@@ -43,7 +43,13 @@ exports.findName = catchAsync(async (req, res, next) => {
     });
   } else {
     const namesList = [...new Set(list.map(el => `${el.name} #${el.ID}`))];
-    res.send(namesList);
+    res.status(200).json({
+      status: 'success',
+      data: {
+        namesList
+      }
+    });
+    // res.send(namesList);
   }
   // } catch (err) {
   //   if (err.kind === 'not_found') {
@@ -120,7 +126,13 @@ exports.findID = catchAsync(async (req, res, next) => {
     assortment: list[0].assortment,
     components
   };
-  res.send(formulation);
+  res.status(200).json({
+    status: 'success',
+    data: {
+      formulation
+    }
+  });
+  // res.send(formulation);
   // } catch (err) {
   //   if (err.kind === 'not_found') {
   //     res.status(404).send({
