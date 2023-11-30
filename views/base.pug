@@ -10,14 +10,44 @@ html
       title Finder of All Things
   
   body
-    // HEADER
-    include _header
+    header
+      img(src='/img/Vitrapack-Intern-logo-webRevised.svg' alt='Vitralogo')
+      h1 Finder of All Things
         
-    // CONTENT
-    include content
-    //-block content
+    div.content
+      form(method='get' action='javascript:GoToPageSF()')
+        .form__group
+          label.form__label(for='singleFile') Toon Single File
+          input#singleFile.form__input(type='text', placeholder='ModelID (5 cijfers ingeven)')
+          button.btn.btn--red Find
+      form(method='get' action='javascript:GoToPageSR()')
+        .form__group
+          label.form__label(for='sAndR') Toon Step & Repeat
+          input#sAndR.form__input(type='text', placeholder='ModelID (5 cijfers ingeven)')
+          button.btn.btn--red Find
+      form(method='get' action='javascript:GoToPageBarCode()')
+        .form__group
+          label.form__label(for='barCode') Toon Barcode scan rapporten
+          input#barCode.form__input(type='text', placeholder='ORV_Lijnen ID (6 cijfers ingeven)')
+          button.btn.btn--red Find
+      form.searchRecepie
+        .form__group
+          label.form__label(for='recepies') Toon Formulles
+          input#recepies.form__input(type='text', placeholder='Naam Formyle (bvb FP 485)')
+          button.btn.btn--red Find
+    div.container
+      div.results.container
+        div.resultList.box Search results for Formulataion names
+        div.recepieResult.box
+          div.resultTitle Search results for Formulataion names
+          div.empty
+          div.resultRows
+            div.listTitle.rowtitle1
+            div.listTitle.rowtitle2
+            div.listTitle.rowtitle3
+            div.reslutRow1
+            div.reslutRow2
+            div.reslutRow3
       
-    // FOOTER
-    include _footer
     
 script(src='/js/script.js')

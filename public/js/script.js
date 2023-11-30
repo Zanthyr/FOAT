@@ -2,10 +2,23 @@
 
 const reslutList = document.querySelector('.resultList');
 const recepieSearch = document.querySelector('.searchRecepie');
+const resultTitle = document.querySelector('.resultTitle');
 const recepieResult = document.querySelector('.recepieResult');
+const recepieResultRow1 = document.querySelector('.reslutRow1');
+const recepieResultRow2 = document.querySelector('.reslutRow2');
+const recepieResultRow3 = document.querySelector('.reslutRow3');
+const recepieResultTitle1 = document.querySelector('.rowtitle1');
+const recepieResultTitle2 = document.querySelector('.rowtitle2');
+const recepieResultTitle3 = document.querySelector('.rowtitle3');
 
 const displaySearchResult = data => {
-  recepieResult.textContent = `Component list for selected formulation`;
+  resultTitle.textContent = `Select Formulation to see components`;
+  recepieResultRow1.innerHTML = '';
+  recepieResultRow2.innerHTML = '';
+  recepieResultRow3.innerHTML = '';
+  recepieResultTitle1.innerHTML = '';
+  recepieResultTitle2.innerHTML = '';
+  recepieResultTitle3.innerHTML = '';
   const ulElement = document.createElement('ul');
   data.forEach(item => {
     newItem = item.split('#');
@@ -24,15 +37,42 @@ const displayRecepieResult = data => {
   const paragraph = document.createElement('p');
   paragraph.id = 'theP';
   paragraph.textContent = data.formulation.name;
-  const ulElement = document.createElement('ul');
+
+  const ulElement1 = document.createElement('ul');
   data.formulation.components.forEach(item => {
-    const liElement = document.createElement('li');
-    liElement.textContent = ` ${item[0]} //--- ${item[1]} %`;
-    ulElement.appendChild(liElement);
+    const liElement1 = document.createElement('li');
+    liElement1.textContent = item[0];
+    ulElement1.appendChild(liElement1);
   });
-  recepieResult.innerHTML = '';
-  recepieResult.appendChild(paragraph);
-  recepieResult.appendChild(ulElement);
+
+  const ulElement2 = document.createElement('ul');
+  data.formulation.components.forEach(item => {
+    const liElement2 = document.createElement('li');
+    liElement2.textContent = `${item[1]} %`;
+    ulElement2.appendChild(liElement2);
+  });
+
+  const ulElement3 = document.createElement('ul');
+  data.formulation.components.forEach(item => {
+    const liElement3 = document.createElement('li');
+    liElement3.textContent = `${Math.round(item[1] * 170) / 1000} kg`;
+    ulElement3.appendChild(liElement3);
+  });
+
+  resultTitle.innerHTML = '';
+  recepieResultRow1.innerHTML = '';
+  recepieResultRow2.innerHTML = '';
+  recepieResultRow3.innerHTML = '';
+  recepieResultTitle1.innerHTML = '';
+  recepieResultTitle2.innerHTML = '';
+  recepieResultTitle3.innerHTML = '';
+  resultTitle.appendChild(paragraph);
+  recepieResultTitle1.innerHTML = 'Component:';
+  recepieResultTitle2.innerHTML = 'Percentage:';
+  recepieResultTitle3.innerHTML = 'Gebruik op 17kg:';
+  recepieResultRow1.appendChild(ulElement1);
+  recepieResultRow2.appendChild(ulElement2);
+  recepieResultRow3.appendChild(ulElement3);
 };
 
 const searchRecepie = async id => {
@@ -40,7 +80,6 @@ const searchRecepie = async id => {
     const response = await fetch(`/Formulation/id/${id}`);
     const res = await response.json();
     displayRecepieResult(res.data);
-    console.log(res.data);
   } catch (error) {
     console.error('Error:', error);
   }
@@ -64,7 +103,15 @@ const searchName = async string => {
     const res = await response.json();
     displaySearchResult(res.data.namesList);
   } catch (error) {
-    console.error('Error:', error);
+    reslutList.innerHTML =
+      'Geen resultaten voor deze naam, probeer maar opnieuw!';
+    resultTitle.innerHTML = '';
+    recepieResultRow1.innerHTML = '';
+    recepieResultRow2.innerHTML = '';
+    recepieResultRow3.innerHTML = '';
+    recepieResultTitle1.innerHTML = '';
+    recepieResultTitle2.innerHTML = '';
+    recepieResultTitle3.innerHTML = '';
   }
 };
 

@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const express = require('express');
-const morgan = require('morgan');
 const AppError = require('./utils/appError');
 const viewRoutes = require('./routes/viewRoutes');
 const formulationRoutes = require('./routes/formulationRoutes');
@@ -12,10 +11,6 @@ const app = express();
 // load view engine to render pages
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
-
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
 
 app.use(express.json());
 

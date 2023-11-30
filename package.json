@@ -4,8 +4,7 @@
   "description": "Node.js Restful CRUD API with Node.js, Express and MySQL",
   "main": "server.js",
   "scripts": {
-    "start:prod": "NODE_ENV=production nodemon server.js",
-    "start:dev": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [
     "nodejs",
@@ -16,10 +15,8 @@
   "author": "David",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "express": "^4.17.1",
-    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "pug": "^3.0.2"
   },
