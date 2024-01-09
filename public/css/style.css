@@ -155,8 +155,7 @@ form {
   border-radius: 4px;
   box-sizing: border-box;
   margin-right: 5rem;
-  /* Pseudo element (a visible thing that isn't really in the DOM).
-      Also needs -ms- */
+
 }
 .form__input:focus {
   outline: none;
@@ -164,9 +163,6 @@ form {
 }
 .form__input:focus:invalid {
   border-bottom: 3px solid #ff7730;
-}
-.form__input::-webkit-input-placeholder {
-  color: #bbb;
 }
 
 .form__label {
