@@ -1,4 +1,4 @@
-# Foat
+# recipeFinder
 
 Finder of all things
 
